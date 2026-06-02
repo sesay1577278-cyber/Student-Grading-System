@@ -1,84 +1,92 @@
+#include <iostream>
+#include <fstream>
 #include "Student.h"
 
-// Default Constructor
+using namespace std;
+
 Student::Student() {
-    studentID = "";
+
+    studentID = 0;
     name = "";
-    email = "";
-    department = "";
-    yearLevel = 1;
+    maths = 0;
+    english = 0;
+    science = 0;
+    average = 0;
+    grade = 'F';
+    status = "Fail";
 }
 
-// Parameterized Constructor
-Student::Student(string id, string nameVal, string emailVal, string dept, int year) {
+Student::Student(int id, string n, int m, int e, int s) {
+
     studentID = id;
-    name = nameVal;
-    email = emailVal;
-    department = dept;
-    yearLevel = year;
+    name = n;
+    maths = m;
+    english = e;
+    science = s;
+
+    calculateResult();
 }
 
-// Destructor
-Student::~Student() {
-    // Nothing to clear for primitive types
+void Student::calculateResult() {
+
+    average = (maths + english + science) / 3.0;
+
+    if (average >= 75)
+        grade = 'A';
+
+    else if (average >= 60)
+        grade = 'B';
+
+    else if (average >= 50)
+        grade = 'C';
+
+    else
+        grade = 'F';
+
+    if (average >= 50)
+        status = "Pass";
+
+    else
+        status = "Fail";
 }
 
-// Getters
-string Student::getStudentID() const {
+void Student::displayResult() {
+
+    cout << "\n========== STUDENT RESULT ==========" << endl;
+
+    cout << "Student ID : " << studentID << endl;
+    cout << "Name       : " << name << endl;
+    cout << "Maths       : " << maths << endl;
+    cout << "English    : " << english << endl;
+    cout << "Science    : " << science << endl;
+    cout << "Average    : " << average << endl;
+    cout << "Grade      : " << grade << endl;
+    cout << "Status     : " << status << endl;
+}
+
+void Student::saveToFile() {
+
+    ofstream file("students.txt", ios::app);
+
+    file << studentID << " "
+         << name << " "
+         << maths << " "
+         << english << " "
+         << biology << " "
+         << science<< " "
+         << average << " "
+         << grade << " "
+         << status << endl;
+
+    file.close();
+}
+
+int Student::getID() {
+
     return studentID;
 }
 
-string Student::getName() const {
+string Student::getName() {
+
     return name;
 }
-
-string Student::getEmail() const {
-    return email;
-}
-
-string Student::getDepartment() const {
-    return department;
-}
-
-int Student::getYearLevel() const {
-    return yearLevel;
-}
-
-// Setters
-void Student::setStudentID(string id) {
-    studentID = id;
-}
-
-void Student::setName(string nameVal) {
-    name = nameVal;
-}
-
-void Student::setEmail(string emailVal) {
-    email = emailVal;
-}
-
-void Student::setDepartment(string dept) {
-    department = dept;
-}
-
-void Student::setYearLevel(int year) {
-    yearLevel = year;
-}
-
-// Display student information
-void Student::displayInfo() const {
-    cout << "\n========================================\n";
-    cout << "          STUDENT INFORMATION          \n";
-    cout << "========================================\n";
-    cout << "Student ID    : " << studentID << endl;
-    cout << "Name          : " << name << endl;
-    cout << "Email         : " << email << endl;
-    cout << "Department    : " << department << endl;
-    cout << "Year Level    : " << yearLevel << endl;
-    cout << "========================================\n";
-}
-
-// Equality comparison
-bool Student::operator==(const Student& other) const {
-    return studentID == other.studentID;
-}s

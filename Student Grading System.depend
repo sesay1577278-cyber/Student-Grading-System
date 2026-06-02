@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1780061903 source:c:\users\ambrose\desktop\student-grading-system\student grading system\main.cpp
+	<iostream>
+	<vector>
+	"Student.h"
+	"User.h"
+
+1780335240 c:\users\ambrose\desktop\student-grading-system\student grading system\student.h
+	<string>
+
+1780069810 c:\users\ambrose\desktop\student-grading-system\student grading system\user.h
+	<string>
+
+1780337984 source:c:\users\ambrose\desktop\student-grading-system\student grading system\student.cpp
+	<iostream>
+	<fstream>
+	"Student.h"
+
+1780061087 source:c:\users\ambrose\desktop\student-grading-system\student grading system\user.cpp
+	<iostream>
+	<fstream>
+	"User.h"
+

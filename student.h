@@ -1,50 +1,32 @@
 #ifndef STUDENT_H
 #define STUDENT_H
 
-#include <iostream>
 #include <string>
 using namespace std;
 
 class Student {
+
 private:
-    string studentID;
+    int studentID;
     string name;
-    string email;
-    string department;
-    int yearLevel;
+    int maths;
+    int english;
+    int science;
+    int biology;
+    float average;
+    char grade;
+    string status;
 
 public:
-    // Constructors
     Student();
-    Student(string id, string name, string email, string dept, int year);
+    Student(int id, string n, int m, int e, int s);
 
-    // Destructor
-    ~Student();
+    void calculateResult();
+    void displayResult();
+    void saveToFile();
 
-    // Getters
-    string getStudentID() const;
-    string getName() const;
-    string getEmail() const;
-    string getDepartment() const;
-    int getYearLevel() const;
-
-    // Setters
-    void setStudentID(string id);
-    void setName(string name);
-    void setEmail(string email);
-    void setDepartment(string dept);
-    void setYearLevel(int year);
-
-    // Display student info
-    void displayInfo() const;
-
-    // Check if two students are equal
-    bool operator==(const Student& other) const;
+    int getID();
+    string getName();
 };
 
-#endif#ifndef STUDENT_H_INCLUDED
-#define STUDENT_H_INCLUDED
-
-
-
-#endif // STUDENT_H_INCLUDED
+#endif
